@@ -1,0 +1,80 @@
+.todo-list-view {
+  display: grid;
+  justify-content: center;
+
+  .todo-container {
+    background: white;
+    margin-top: 1rem;
+
+    .todo-header {
+      display: contents;
+
+      .todo-input {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: gray solid 1px;
+        border-radius: 4px 0px 0px 4px;
+      }
+
+      .todo-button {
+        background: green;
+        color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: none;
+        padding: 0 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+        transition: background-color 0.3s;
+      }
+    }
+  }
+
+  .todo-list-for {
+    display: grid;
+    margin-top: 1rem;
+
+    .todo-item {
+      display: flex;
+      gap: 5px;
+      justify-content: space-between;
+
+      .todo-item-element {
+        display: flex;
+        gap: 5px;
+      }
+
+      .todo-delete {
+        background: red;
+        border: 1px solid red;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .todo-empty-state {
+    text-align: center;
+    margin-top: 1rem;
+    color: gray;
+  }
+
+  .todo-list-result {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+
+    .total {
+      color: green;
+    }
+
+    .complete {
+      color: blue;
+    }
+
+    .pending {
+      color: orange;
+    }
+  }
+}
