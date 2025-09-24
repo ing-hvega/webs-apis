@@ -1,0 +1,31 @@
+.app-todolist {
+    text-align: center;
+
+    .app-todolist-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app-todolist-task {
+        display: flex;
+        gap: 10px;
+
+        input[type="checkbox"] {
+            border: 1px solid green;
+        }
+
+        .title {
+            font-weight: bold;
+            color: gray;
+        }
+
+        button {
+            background-color: red;
+            border-radius: 2px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
