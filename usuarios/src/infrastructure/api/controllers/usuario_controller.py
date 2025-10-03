@@ -5,6 +5,7 @@ from src.application.services.usuario_service import UsuarioService
 from src.infrastructure.config.database import get_db
 from src.infrastructure.dto.usuario_dto import UsuarioCreateDto
 from src.infrastructure.repositories.usuario_repository import UsuarioRepository
+from src.infrastructure.schema.user_schema import UserSchemaCreate
 
 router = APIRouter(prefix="/usuarios", tags=["Usuarios"])
 
@@ -15,7 +16,7 @@ def get_usuario_service(db: Session = Depends(get_db)) -> UsuarioService:
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
-def crear_usuario(usuario_data, service: UsuarioService = Depends(get_usuario_service)):
+def crear_usuario(usuario_data: UserSchemaCreate, service: UsuarioService = Depends(get_usuario_service)):
     try:
         usuario_dto = UsuarioCreateDto(
             nombre=usuario_data.nombre,

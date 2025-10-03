@@ -12,3 +12,7 @@ class UsuarioRepositoryPort(ABC):
     @abstractmethod
     def actualizar_usuario(self, usuario: Usuario) -> Usuario:
         pass
+
+    @abstractmethod
+    def obtener_usuario_por_correo(self, email: str) -> Usuario:
+        pass

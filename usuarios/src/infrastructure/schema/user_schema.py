@@ -6,3 +6,5 @@ class UserSchemaBase(BaseModel):
     apellido: str = Field(..., min_length=2, max_length=50)
     email: str = Field(..., min_length=2, max_length=50)
 
+class UserSchemaCreate(UserSchemaBase):
+    password: str = Field(..., min_length=8,)

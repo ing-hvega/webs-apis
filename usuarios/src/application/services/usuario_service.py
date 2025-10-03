@@ -16,6 +16,10 @@ class UsuarioService:
             password=usuario_dto.password
         )
 
+        usuario_existente = self.usuario_repository.obtener_usuario_por_correo(usuario.email)
+        if usuario_existente:
+            raise ValueError(f"El usuario con email {usuario.email} ya existe.")
+
         usuario_creado = self.usuario_repository.crear_usuario(usuario)
 
         return UsuarioDto.from_entity(usuario_creado)
