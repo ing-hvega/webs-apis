@@ -11,7 +11,7 @@ function Home() {
     return (
         <div className='home-containers'>
             <h1>Bienvenido, {user?.username}!</h1>
-            <p>Has iniciado sesión correctamente.</p>
+            <p>Hola {user?.name} Has iniciado sesión correctamente.</p>
             <button onClick={handleLogout} className="logout-button">
                 Cerrar Sesión
             </button>

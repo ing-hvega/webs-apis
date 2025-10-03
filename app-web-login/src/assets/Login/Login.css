@@ -3,9 +3,9 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /*background-image: url('https://i.ytimg.com/vi/zTK9DhM6OQc/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGBMgKih_MA8=&rs=AOn4CLDpbw73W-k1PxmQRvbO2xMCh8CK7Q');*/
-    /*background-size: cover;*/
-    /*background-position: center;*/
+    background-image: url('https://wallpapers.com/images/hd/foggy-mountain-minimalist-1s0w3a4nti5bvzw7.webp');
+    background-size: cover;
+    background-position: center;
 
     .login-card {
         background: rgba(255, 255, 255, 0.8);

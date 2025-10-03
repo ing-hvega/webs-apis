@@ -13,9 +13,27 @@ export const useAuth = () => {
 };
 
 const USERS_FAKE = [
-    {id: 1, username: 'user1', password: 'user1', name: 'Administrador'},
-    {id: 2, username: 'user2', password: 'user2', name: 'Cliente'},
+    {id: 1, username: 'admin', password: '123', name: 'Administrador', role: 'admin'},
+    {id: 2, username: 'moderador', password: '123', name: 'Moderado', role: 'moderador'},
+    {id: 3, username: 'user', password: '123', name: 'Usuario Regular', role: 'user'},
 ]
+
+const ROLE_PERMISSIONS = {
+    admin: [
+        '/dashboard',
+        '/home',
+        '/profile'
+    ],
+    moderador: [
+        '/dashboard',
+        '/home',
+        '/profile'
+    ],
+    user: [
+        '/home',
+        '/profile'
+    ],
+}
 
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -48,13 +66,14 @@ export const AuthProvider = ({children}) => {
                 id: foundUser.id,
                 username: foundUser.username,
                 name: foundUser.name,
+                role: foundUser.role,
             }
 
             setUser(userData);
             localStorage.setItem('authUser', JSON.stringify(userData));
             setLoading(false);
 
-            return { success: true, user: userData };
+            return {success: true, user: userData};
         } else {
             setLoading(false);
             return {success: false, message: 'Credenciales incorrectas'}
@@ -68,12 +87,34 @@ export const AuthProvider = ({children}) => {
 
     const isAuthenticated = !!user;
 
+    const hasPermission = (path) => {
+
+       if (!user || !user.role) {
+            return false
+        }
+
+        const userPermissions = ROLE_PERMISSIONS[user.role] || [];
+
+        return userPermissions.includes(path);
+    }
+
+    const hasRole = (role) => {
+        return user?.role === role;
+    }
+
+    const hasAnyRole = (roles) => {
+        return roles.includes(user?.role);
+    }
+
     const value = {
         user,
         isAuthenticated,
         loading,
         logout,
         login,
+        hasPermission,
+        hasRole,
+        hasAnyRole,
     }
 
     return (
