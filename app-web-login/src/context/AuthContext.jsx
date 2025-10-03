@@ -22,6 +22,7 @@ const ROLE_PERMISSIONS = {
     admin: [
         '/dashboard',
         '/home',
+        '/report',
         '/profile'
     ],
     moderador: [
@@ -42,18 +43,23 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         const savedUser = localStorage.getItem('authUser');
 
-        if (savedUser) {
-            try {
-                const parsedUser = JSON.parse(savedUser);
+        const initializeApp = async () => {
+            await new Promise(resolve => setTimeout(resolve, 500));
 
-                setUser(parsedUser)
-            } catch (error) {
-                console.log("Error al cargar el usuario guardado:", error.message);
-                localStorage.removeItem('authUser');
+            if (savedUser) {
+                try {
+                    const parsedUser = JSON.parse(savedUser);
+                    setUser(parsedUser)
+                } catch (error) {
+                    console.log("Error al cargar el usuario guardado:", error.message);
+                    localStorage.removeItem('authUser');
+                }
             }
-        }
 
-        setLoading(false);
+            setLoading(false);
+        };
+
+        initializeApp();
     }, []);
 
     const login = (username, password) => {
